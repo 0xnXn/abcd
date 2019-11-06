@@ -1,0 +1,20 @@
+import socket
+client = socket.socket()
+port = 12345
+client.connect(("localhost",port))
+
+frame = int(input("No of Frames ?"))
+
+client.send(str(frame).encode())
+
+
+for i in range(frame):
+    a = input("Enter msg :")
+    byt = a.encode()
+    client.send(byt)
+
+    data = client.recv(4096)
+    print("ACK RECIVED FOR FRAME ",data.decode())
+
+client.close()
+

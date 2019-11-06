@@ -1,0 +1,28 @@
+import socket
+
+serv = socket.socket()
+port = 12345
+serv.bind(("",port))
+
+serv.listen(5)
+
+print("listening on port ",port)
+conn,addr = serv.accept()
+
+count = conn.recv(4096)
+count = int(count.decode())
+print("Frames are to be send : ",count)
+
+for i in range(count):
+     # print(conn,addr)
+     
+     data = conn.recv(4096)
+     print("Frame recieved ",data.decode())
+
+     conn.send(str(i+1).encode())
+     print("ACK SEND FOR FRAME ",i+1)
+
+
+conn.close()
+
+

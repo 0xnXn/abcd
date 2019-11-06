@@ -1,0 +1,26 @@
+bucket_size = 10
+output_size = 1
+storage = 0
+
+print(" --- Enter 69 to EXIT --- ")
+print(" --- Enter 0 to Not Enter Frame --- ")
+
+while True:
+
+    input_size = int(input("Enter Frame size : "))
+
+    if(input_size !=0):
+        if(input_size == 69):
+            break
+        if((input_size+storage)<=bucket_size):
+            print('Frame entered in bucket ')
+            storage += input_size
+            print("BUCKET SIZE  After Frame input : ",storage)    
+        else:
+            loss =(input_size+storage-bucket_size)
+            storage = bucket_size
+            print("Package loss is : ",loss)
+    if(storage!=0):
+        storage = storage-output_size
+    print("BUCKET AFTER OUTPUT :",storage)
+
